@@ -11,6 +11,8 @@ class Configurate:
     def __init__(self):
         self.path_config: str = Path("files/config.ini")
         if not self.path_config.exists():
+            if not (path_files := Path("files")).exists():
+                path_files.mkdir()
             self.create()
 
         self.config = self.read()
